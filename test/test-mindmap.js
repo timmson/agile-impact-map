@@ -2,7 +2,7 @@ const {expect} = require("chai");
 require("mocha");
 
 const MindMap = require("../src/mindmap");
-const NodesAndLinks = require("./nodes.test")
+const NodesAndLinks = require("./nodes.test");
 
 describe("Map should", () => {
 
@@ -16,7 +16,7 @@ describe("Map should", () => {
 		expect(map.links).has.length(1);
 		expect(map.nodes[0].color).eq("#7fa23e");
 		expect(map.links[0].color).eq("#939393");
-/*
+		/*
 		console.log(map);*/
 	});
 

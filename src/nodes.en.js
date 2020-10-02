@@ -441,6 +441,12 @@ module.exports = {
 			type: "solid"
 		},
 		{
+			from: 30,
+			to: 31,
+			text: "improves",
+			type: "solid"
+		},
+		{
 			from: 31,
 			to: 101,
 			text: "improves",
@@ -478,4 +484,4 @@ module.exports = {
 		}
 	]
 
-}
+};

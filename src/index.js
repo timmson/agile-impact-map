@@ -12,35 +12,35 @@ const mindMap = new MindMap(nodesAndLinks);
 const goJs = GoJs.GraphObject.make;
 
 const nodeTemplate = goJs(GoJs.Node, "Auto", {
-		locationSpot: GoJs.Spot.Center
+	locationSpot: GoJs.Spot.Center
+},
+
+goJs(GoJs.Shape, "RoundedRectangle",
+	{
+		fill: "white",
+		portId: "",
+		cursor: "pointer",
+		fromLinkable: true,
+		fromLinkableSelfNode: false,
+		fromLinkableDuplicates: false,
+		toLinkable: true,
+		toLinkableSelfNode: false,
+		toLinkableDuplicates: false
 	},
+	new GoJs.Binding("fill", "color")
+),
 
-	goJs(GoJs.Shape, "RoundedRectangle",
-		{
-			fill: "white",
-			portId: "",
-			cursor: "pointer",
-			fromLinkable: true,
-			fromLinkableSelfNode: false,
-			fromLinkableDuplicates: false,
-			toLinkable: true,
-			toLinkableSelfNode: false,
-			toLinkableDuplicates: false
-		},
-		new GoJs.Binding("fill", "color")
-	),
-
-	goJs(GoJs.TextBlock,
-		{
-			font: "bold 14px Lucida Console",
-			cursor: "pointer",
-			stroke: "#eee",
-			margin: 6,  // make some extra space for the shape around the text
-			isMultiline: false,  // don't allow newlines in text
-			editable: false  // allow in-place editing by user
-		},
-		new GoJs.Binding("text", "text").makeTwoWay()
-	)
+goJs(GoJs.TextBlock,
+	{
+		font: "bold 14px Lucida Console",
+		cursor: "pointer",
+		stroke: "#eee",
+		margin: 6,  // make some extra space for the shape around the text
+		isMultiline: false,  // don't allow newlines in text
+		editable: false  // allow in-place editing by user
+	},
+	new GoJs.Binding("text", "text").makeTwoWay()
+)
 );
 
 const linkTemplate = goJs(GoJs.Link,
