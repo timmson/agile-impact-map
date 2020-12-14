@@ -17,7 +17,9 @@
     "url": "git+https://github.com/timmson/java-interview.git"
   },
   "keywords": [
-    "agile","scrum", "less"
+    "agile",
+    "scrum",
+    "less"
   ],
   "author": "Krotov Artem",
   "license": "MIT",
