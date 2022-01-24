@@ -1,23 +1,42 @@
-const {expect} = require("chai");
-require("mocha");
-
 const MindMap = require("../src/mindmap");
-const NodesAndLinks = require("./nodes.test");
+const NodesAndLinks = {
+	nodes: [
+		{
+			key: 1,
+			text: "Problem",
+			type: "product",
+			link: "https://agilix.nl/blog-en/broad-product-definition/"
+		},
+		{
+			key: 2,
+			text: "Solution hypothesis",
+			type: "product",
+			link: "https://agilix.nl/blog-en/broad-product-definition/"
+		}
+	],
+	links: [
+		{
+			from: 1,
+			to: 2,
+			text: "spawns",
+			type: "solid"
+		}
+	]
+
+};
 
 describe("Map should", () => {
 
 	const mindMap = new MindMap(NodesAndLinks);
 
-	it("transform source to nodes and links", () => {
+	test("transform source to nodes and links", () => {
 
 		const map = mindMap.getMap();
 
-		expect(map.nodes).has.length(2);
-		expect(map.links).has.length(1);
-		expect(map.nodes[0].color).eq("#7fa23e");
-		expect(map.links[0].color).eq("#939393");
-		/*
-		console.log(map);*/
+		expect(map.nodes).toHaveLength(2);
+		expect(map.links).toHaveLength(1);
+		expect(map.nodes[0].color).toEqual("#7fa23e");
+		expect(map.links[0].color).toEqual("#939393");
 	});
 
 });

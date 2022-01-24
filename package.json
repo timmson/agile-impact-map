@@ -1,6 +1,6 @@
 {
   "name": "agile-impact-map",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Agile Impact Map",
   "main": "index.js",
   "private": true,

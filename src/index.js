@@ -44,9 +44,9 @@ goJs(GoJs.TextBlock,
 );
 
 const linkTemplate = goJs(GoJs.Link,
-	goJs(GoJs.Shape, {stroke: "#939393"}),                           // this is the link shape (the line)
-	goJs(GoJs.Shape, {toArrow: "Standard", stroke: "#939393", fill: "#939393"}),  // this is an arrowhead
-	goJs(GoJs.TextBlock, {stroke: "#939393"}, new GoJs.Binding("text", "text")) // this is a Link label
+	goJs(GoJs.Shape, {stroke: "#939393"}),
+	goJs(GoJs.Shape, {toArrow: "Standard", stroke: "#939393", fill: "#939393"}),
+	goJs(GoJs.TextBlock, {stroke: "#939393"}, new GoJs.Binding("text", "text"))
 );
 
 
@@ -59,9 +59,9 @@ Vue.component("diagram", {
 		});
 		myDiagram.addDiagramListener("ObjectSingleClicked",
 			function (e) {
-				if (e.subject.part.ib.link !== undefined) {
+				if (e.subject.part.jb.link !== undefined) {
 					//console.log(e.subject.part.ib.link);
-					window.open(e.subject.part.ib.link);
+					window.open(e.subject.part.jb.link);
 				}
 			});
 		const map = mindMap.getMap();
