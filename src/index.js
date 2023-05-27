@@ -2,15 +2,15 @@ import "bootstrap"
 import "./index.scss"
 
 import GoJs from "gojs"
-import Vue from "vue"
 
 import nodesAndLinks from "./nodes.en"
 import MindMap from "./mindmap"
 
+document.getElementById("currentYear").textContent = new Date().getFullYear().toString()
+
+
 const mindMap = new MindMap(nodesAndLinks)
-
 const goJs = GoJs.GraphObject.make
-
 const nodeTemplate = goJs(GoJs.Node, "Auto", {
 	locationSpot: GoJs.Spot.Center
 },
@@ -50,36 +50,22 @@ const linkTemplate = goJs(GoJs.Link,
 )
 
 
-Vue.component("diagram", {
-	template: "<div class=\"diagram\"></div>",
-	//props:,
-	mounted() {
-		const myDiagram = goJs(GoJs.Diagram, this.$el, {
-			layout: goJs(GoJs.ForceDirectedLayout)
-		})
-		myDiagram.addDiagramListener("ObjectSingleClicked",
-			function (e) {
-				if (e.subject.part.jb.link !== undefined) {
-					//console.log(e.subject.part.ib.link);
-					window.open(e.subject.part.jb.link)
-				}
-			})
-		const map = mindMap.getMap()
-		myDiagram.model = new GoJs.GraphLinksModel(map.nodes, map.links)
-		myDiagram.nodeTemplate = nodeTemplate
-		myDiagram.linkTemplate = linkTemplate
-		//myDiagram.isEnabled = false;
-	}
+const myDiagram = goJs(GoJs.Diagram, "diagram", {
+	layout: goJs(GoJs.ForceDirectedLayout)
 })
 
+myDiagram.addDiagramListener("ObjectSingleClicked",
+	function (e) {
+		if (e.subject.part.jb.link !== undefined) {
+			//console.log(e.subject.part.ib.link);
+			window.open(e.subject.part.jb.link)
+		}
+	})
 
-new Vue({
-	el: "#app",
-	data: {
-		currentYear: new Date().getFullYear().toString(),
-		modelData: {}
-	},
-	mounted() {
+const map = mindMap.getMap()
 
-	}
-})
+myDiagram.model = new GoJs.GraphLinksModel(map.nodes, map.links)
+myDiagram.nodeTemplate = nodeTemplate
+myDiagram.linkTemplate = linkTemplate
+//myDiagram.isEnabled = false;
+
